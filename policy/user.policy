@@ -1,0 +1,12 @@
+grant codeBase "file:/D:/password-manager/*" {
+    permission java.security.AllPermission ;
+};
+
+grant {
+ permission java.util.PropertyPermission "java.util.logging.SimpleFormatter.format", "write";
+ permission java.util.PropertyPermission "org.jetbrains.projector.server.enable", "read";
+ permission java.util.PropertyPermission "webswing.rootDir", "read";
+ permission java.util.PropertyPermission "user.dir", "read";
+ permission java.util.PropertyPermission "flatlaf.useWindowDecorations", "read";
+};
+
