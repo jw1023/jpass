@@ -65,7 +65,6 @@ import jpass.util.SpringUtilities;
  * Utility class for displaying message dialog.
  *
  * @author Gabor_Bata
- *
  */
 public final class MessageDialog extends JDialog implements ActionListener {
 
@@ -199,7 +198,7 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Shows a warning message.
      *
-     * @param parent parent component
+     * @param parent  parent component
      * @param message dialog message
      */
     public static void showWarningMessage(final Component parent, final String message) {
@@ -209,7 +208,7 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Shows an error message.
      *
-     * @param parent parent component
+     * @param parent  parent component
      * @param message dialog message
      */
     public static void showErrorMessage(final Component parent, final String message) {
@@ -219,7 +218,7 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Shows an information message.
      *
-     * @param parent parent component
+     * @param parent  parent component
      * @param message dialog message
      */
     public static void showInformationMessage(final Component parent, final String message) {
@@ -229,8 +228,8 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Shows a question dialog.
      *
-     * @param parent parent component
-     * @param message dialog message
+     * @param parent     parent component
+     * @param message    dialog message
      * @param optionType question type
      * @return selected option
      */
@@ -241,7 +240,7 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Shows a password dialog.
      *
-     * @param parent parent component
+     * @param parent  parent component
      * @param confirm password confirmation
      * @return the password
      */
@@ -291,8 +290,8 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Returns an image resource.
      *
-     * @param name image name without path and extension
-     * @param width the image width
+     * @param name   image name without path and extension
+     * @param width  the image width
      * @param height the image height
      * @return ImageIcon object
      */
@@ -334,8 +333,8 @@ public final class MessageDialog extends JDialog implements ActionListener {
     /**
      * Shows a text file from the class path.
      *
-     * @param parent parent component
-     * @param title window title
+     * @param parent   parent component
+     * @param title    window title
      * @param textFile text file name
      */
     public static void showTextFile(final Component parent, final String title, final String textFile) {

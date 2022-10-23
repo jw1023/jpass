@@ -38,7 +38,6 @@ import jpass.ui.MessageDialog;
  * application is disabled, and a progress indicator is shown.
  *
  * @author Gabor_Bata
- *
  */
 public abstract class Worker extends SwingWorker<Void, Void> {
 

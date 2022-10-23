@@ -37,15 +37,13 @@ import jpass.ui.JPassFrame;
  * Listener for widow close.
  *
  * @author Gabor_Bata
- *
  */
 public class CloseListener extends WindowAdapter {
 
     /**
      * Calls the {@code exitFrame} method of main frame.
      *
-     * @see
-     * java.awt.event.WindowAdapter#windowClosing(java.awt.event.WindowEvent)
+     * @see java.awt.event.WindowAdapter#windowClosing(java.awt.event.WindowEvent)
      */
     @Override
     public void windowClosing(WindowEvent event) {

@@ -36,15 +36,14 @@ import javax.swing.KeyStroke;
  * Class for handling menu actions.
  *
  * @author Gabor_Bata
- *
  */
 public abstract class AbstractMenuAction extends AbstractAction {
 
     /**
      * Creates a new menu action.
      *
-     * @param text title of the action that appears on UI
-     * @param icon icon of action
+     * @param text        title of the action that appears on UI
+     * @param icon        icon of action
      * @param accelerator accelerator key
      */
     public AbstractMenuAction(String text, Icon icon, KeyStroke accelerator) {

@@ -43,7 +43,6 @@ import static jpass.ui.MessageDialog.YES_OPTION;
  * Helper class for entry operations.
  *
  * @author Gabor_Bata
- *
  */
 public final class EntryHelper {
 
@@ -148,7 +147,7 @@ public final class EntryHelper {
     /**
      * Copy entry field value to clipboard.
      *
-     * @param parent the parent frame
+     * @param parent  the parent frame
      * @param content the content to copy
      */
     public static void copyEntryField(JPassFrame parent, String content) {

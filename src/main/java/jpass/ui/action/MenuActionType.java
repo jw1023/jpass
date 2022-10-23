@@ -57,7 +57,6 @@ import static java.awt.event.InputEvent.ALT_DOWN_MASK;
  * Enumeration which holds menu actions and related data.
  *
  * @author Gabor_Bata
- *
  */
 public enum MenuActionType {
     NEW_FILE(new AbstractMenuAction("New", getIcon("new"), getKeyStroke(KeyEvent.VK_N, CTRL_DOWN_MASK)) {

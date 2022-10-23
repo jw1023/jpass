@@ -51,7 +51,6 @@ import static jpass.ui.action.TextComponentActionType.SELECT_ALL;
  * A listener which adds context menu capability to text components.
  *
  * @author Gabor_Bata
- *
  */
 public class TextComponentPopupListener extends MouseAdapter {
 

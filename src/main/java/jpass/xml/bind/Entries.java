@@ -1,6 +1,7 @@
 package jpass.xml.bind;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,6 @@ import java.util.List;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- *
  */
 @JacksonXmlRootElement(localName = "entries")
 public class Entries {

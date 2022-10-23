@@ -40,6 +40,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+
 import jpass.ui.action.TableListener;
 import jpass.util.Configuration;
 import jpass.util.DateUtils;
@@ -81,8 +82,8 @@ public class EntryDetailsTable extends JTable {
             .collect(Collectors.toMap(detail -> detail.name(), Function.identity()));
 
     private static final String[] DEFAULT_DETAILS = {
-        DetailType.TITLE.name(),
-        DetailType.MODIFIED.name()
+            DetailType.TITLE.name(),
+            DetailType.MODIFIED.name()
     };
 
     private final List<DetailType> detailsToDisplay;

@@ -40,7 +40,6 @@ import java.awt.datatransfer.UnsupportedFlavorException;
  * System clipboard related utility class.
  *
  * @author Gabor_Bata
- *
  */
 public final class ClipboardUtils {
 
@@ -108,7 +107,6 @@ public final class ClipboardUtils {
      * class, the content of clipboard can be cleared.
      *
      * @author Gabor_Bata
-     *
      */
     protected static final class EmptyClipboardContent implements Transferable, ClipboardOwner {
 

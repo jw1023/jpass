@@ -31,6 +31,7 @@
 package jpass.crypt.io;
 
 import jpass.io.JPassInputStream;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -103,8 +104,8 @@ public class CryptInputStream extends InputStream {
      * Creates a cipher with the key and iv provided.
      *
      * @param parent Stream that provides the encrypted data
-     * @param key key for the cipher algorithm
-     * @param iv initial values for the CBC scheme
+     * @param key    key for the cipher algorithm
+     * @param iv     initial values for the CBC scheme
      */
     public CryptInputStream(InputStream parent, byte[] key, byte[] iv) {
         this._parent = parent;
@@ -118,7 +119,7 @@ public class CryptInputStream extends InputStream {
      * stream, an {@link java.io.IOException} will be raised.
      *
      * @param parent Stream that provides the encrypted data
-     * @param key key for the cipher algorithm
+     * @param key    key for the cipher algorithm
      * @throws IOException if the iv can't be read
      */
     public CryptInputStream(InputStream parent, byte[] key) throws IOException {
@@ -154,7 +155,7 @@ public class CryptInputStream extends InputStream {
      *
      * @return next decrypted {@code byte} or {@code -1}
      * @throws IOException if the decryption fails or the underlying stream
-     * throws an exception
+     *                     throws an exception
      */
     @Override
     public int read() throws IOException {

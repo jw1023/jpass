@@ -32,6 +32,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,9 +40,8 @@ import java.io.OutputStream;
 /**
  * Class for conversion between objects and streams representing XMLs.
  *
- * @author Gabor_Bata
- *
  * @param <T> the type of object to map
+ * @author Gabor_Bata
  */
 public class XmlConverter<T> {
 
@@ -60,7 +60,7 @@ public class XmlConverter<T> {
     /**
      * Maps the given object to the given output stream.
      *
-     * @param document the document object which represents the XML document
+     * @param document     the document object which represents the XML document
      * @param outputStream the output stream
      * @throws IOException if any error occurred
      */

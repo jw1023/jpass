@@ -38,7 +38,6 @@ import jpass.xml.bind.Entry;
  * Data model of the application data.
  *
  * @author Gabor_Bata
- *
  */
 public class DataModel {
 

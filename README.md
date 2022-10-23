@@ -7,7 +7,8 @@ JPass [![Java CI with Maven](https://github.com/gaborbata/jpass/workflows/Java%2
 
 Overview
 --------
-JPass is a simple, small, portable password manager application with strong encryption. It allows you to store user names, passwords, URLs and generic notes in an encrypted file protected by one master password.
+JPass is a simple, small, portable password manager application with strong encryption. It allows you to store user
+names, passwords, URLs and generic notes in an encrypted file protected by one master password.
 
 Features:
 
@@ -21,13 +22,14 @@ Features:
 
 Usage
 -----
-Java 8 or later is recommended to run JPass.
-You can run the application from the command line by typing (the password file is optional):
+Java 8 or later is recommended to run JPass. You can run the application from the command line by typing (the password
+file is optional):
 
     java -jar jpass-1.0.0-RELEASE.jar [password_file]
 
-For convenience, batch/shell scripts are also available for launching JPass for various platforms (i.e. `jpass.bat` for Windows, `jpass.sh` for Linux, `jpass.command` for macOS).
-Please make sure `PATH`, or `JAVA_HOME` environment variables point to a valid Java installation.
+For convenience, batch/shell scripts are also available for launching JPass for various platforms (i.e. `jpass.bat` for
+Windows, `jpass.sh` for Linux, `jpass.command` for macOS). Please make sure `PATH`, or `JAVA_HOME` environment variables
+point to a valid Java installation.
 
 Download
 --------
@@ -40,6 +42,7 @@ For Windows, you can also install JPass using [scoop](https://scoop.sh/) from th
 
 How to compile
 --------------
+
 * Maven: `mvn clean package`
 * Gradle: `gradle clean build`
 * sbt: `sbt clean package`

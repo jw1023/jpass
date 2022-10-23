@@ -49,7 +49,6 @@ import static java.awt.event.InputEvent.CTRL_DOWN_MASK;
  * Enumeration which holds text actions and related data.
  *
  * @author Gabor_Bata
- *
  */
 public enum TextComponentActionType {
     CUT(new TextComponentAction("Cut", getKeyStroke(KeyEvent.VK_X, CTRL_DOWN_MASK), KeyEvent.VK_T) {

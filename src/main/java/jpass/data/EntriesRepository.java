@@ -51,7 +51,6 @@ import static jpass.util.StringUtils.stripString;
  * Repository class for reading and writing (encrypted) XML documents.
  *
  * @author Gabor_Bata
- *
  */
 public final class EntriesRepository {
 
@@ -74,7 +73,7 @@ public final class EntriesRepository {
      * Creates a DocumentRepository instance.
      *
      * @param fileName file name
-     * @param key key for encryption
+     * @param key      key for encryption
      */
     private EntriesRepository(final String fileName, final char[] key) {
         this.fileName = fileName;
@@ -95,7 +94,7 @@ public final class EntriesRepository {
      * Creates a document repository with encryption.
      *
      * @param fileName file name
-     * @param key key for encryption
+     * @param key      key for encryption
      * @return a new DocumentHelper object
      */
     public static EntriesRepository newInstance(final String fileName, final char[] key) {
@@ -106,9 +105,9 @@ public final class EntriesRepository {
      * Reads and XML file to an {@link Entries} object.
      *
      * @return the document
-     * @throws FileNotFoundException if file is not exists
-     * @throws IOException when I/O error occurred (including incorrect
-     * password, or file format issues)
+     * @throws FileNotFoundException    if file is not exists
+     * @throws IOException              when I/O error occurred (including incorrect
+     *                                  password, or file format issues)
      * @throws DocumentProcessException when document could not be read
      */
     public Entries readDocument() throws IOException, DocumentProcessException {

@@ -32,6 +32,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+
 import jpass.xml.bind.Entries;
 import jpass.xml.bind.Entry;
 import org.junit.Assert;
@@ -90,7 +91,7 @@ public class EntriesRepositoryTest {
     @Test(expected = IOException.class)
     public void shouldThrowExceptionWhenReadingDocumentWithInvalidFormat() throws DocumentProcessException, IOException {
         // given
-        try ( FileWriter writer = new FileWriter(filePath)) {
+        try (FileWriter writer = new FileWriter(filePath)) {
             writer.append("invalid content");
         } catch (Exception e) {
             Assert.fail("could not prepare test data");
@@ -134,7 +135,7 @@ public class EntriesRepositoryTest {
     @Test(expected = IOException.class)
     public void shouldThrowExceptionWhenReadingUnencryptedDocumentWithInvalidFormat() throws DocumentProcessException, IOException {
         // given
-        try ( FileWriter writer = new FileWriter(filePath)) {
+        try (FileWriter writer = new FileWriter(filePath)) {
             writer.append("invalid content");
         } catch (Exception e) {
             Assert.fail("could not prepare test data");

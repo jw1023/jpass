@@ -43,3 +43,5 @@ nbbuild/
 nbdist/
 .nb-gradle/
 nb-configuration.xml
+
+.idea

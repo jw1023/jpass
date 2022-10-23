@@ -55,7 +55,6 @@ import static java.lang.String.format;
  * Helper utils for file operations.
  *
  * @author Gabor_Bata
- *
  */
 public final class FileHelper {
 
@@ -161,7 +160,7 @@ public final class FileHelper {
      * Imports the given file.
      *
      * @param fileName file name
-     * @param parent parent component
+     * @param parent   parent component
      */
     static void importFileInBackground(final String fileName, final JPassFrame parent) {
         Worker worker = new Worker(parent) {
@@ -197,10 +196,10 @@ public final class FileHelper {
     /**
      * Shows a file chooser dialog and saves a file.
      *
-     * @param parent parent component
-     * @param saveAs normal 'Save' dialog or 'Save as'
+     * @param parent          parent component
+     * @param saveAs          normal 'Save' dialog or 'Save as'
      * @param successCallback callback which is called when the file has been
-     * successfully saved
+     *                        successfully saved
      */
     public static void saveFile(final JPassFrame parent, final boolean saveAs, final Runnable successCallback) {
         final String fileName;
@@ -284,7 +283,7 @@ public final class FileHelper {
      * Loads a file and fills the data model.
      *
      * @param fileName file name
-     * @param parent parent component
+     * @param parent   parent component
      */
     public static void openFileInBackground(final String fileName, final JPassFrame parent) {
         parent.clearModel();
@@ -333,7 +332,7 @@ public final class FileHelper {
     /**
      * Handles file not found exception.
      *
-     * @param parent parent frame
+     * @param parent   parent frame
      * @param fileName file name
      * @param password password to create a new file
      */
@@ -360,9 +359,9 @@ public final class FileHelper {
     /**
      * Shows a file chooser dialog.
      *
-     * @param parent parent component
-     * @param taskName name of the task
-     * @param extension accepted file extension
+     * @param parent      parent component
+     * @param taskName    name of the task
+     * @param extension   accepted file extension
      * @param description file extension description
      * @return a file object
      */
@@ -392,7 +391,7 @@ public final class FileHelper {
      * Checks if overwrite is accepted.
      *
      * @param fileName file name
-     * @param parent parent component
+     * @param parent   parent component
      * @return {@code true} if overwrite is accepted; otherwise {@code false}
      */
     private static boolean checkFileOverwrite(String fileName, JPassFrame parent) {
@@ -410,7 +409,7 @@ public final class FileHelper {
     /**
      * Checks if the file name has the given extension
      *
-     * @param fileName file name
+     * @param fileName  file name
      * @param extension extension
      * @return file name ending with the given extension
      */

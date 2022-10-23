@@ -58,7 +58,6 @@ import jpass.util.SpringUtilities;
  * Dialog for generating random passwords.
  *
  * @author Gabor_Bata
- *
  */
 public final class GeneratePasswordDialog extends JDialog implements ActionListener {
 
@@ -71,9 +70,9 @@ public final class GeneratePasswordDialog extends JDialog implements ActionListe
      * Options for password generation.
      */
     private static final String[][] PASSWORD_OPTIONS = {
-        {"Upper case letters (A-Z)", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"},
-        {"Lower case letters (a-z)", "abcdefghijklmnopqrstuvwxyz"},
-        {"Numbers (0-9)", "0123456789"}
+            {"Upper case letters (A-Z)", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"},
+            {"Lower case letters (a-z)", "abcdefghijklmnopqrstuvwxyz"},
+            {"Numbers (0-9)", "0123456789"}
     };
 
     private JCheckBox[] checkBoxes;
@@ -121,10 +120,9 @@ public final class GeneratePasswordDialog extends JDialog implements ActionListe
     /**
      * Initializes the GeneratePasswordDialog instance.
      *
-     * @param parent parent component
+     * @param parent           parent component
      * @param showAcceptButton if true then the dialog shows an "Accept" and
-     * "Cancel" button, otherwise only a "Close" button
-     *
+     *                         "Cancel" button, otherwise only a "Close" button
      */
     private void initDialog(final Component parent, final boolean showAcceptButton) {
         setModal(true);
@@ -210,8 +208,7 @@ public final class GeneratePasswordDialog extends JDialog implements ActionListe
     }
 
     /**
-     * @see
-     * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
     @Override
     public void actionPerformed(ActionEvent e) {

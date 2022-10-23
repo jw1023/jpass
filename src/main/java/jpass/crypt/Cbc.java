@@ -92,8 +92,8 @@ public class Cbc {
     /**
      * Creates the temporary buffers.
      *
-     * @param iv initial value of {@link Cbc#_tmp}
-     * @param key key for {@link Cbc#_cipher}
+     * @param iv     initial value of {@link Cbc#_tmp}
+     * @param key    key for {@link Cbc#_cipher}
      * @param output stream where the encrypted or decrypted data is written
      */
     public Cbc(byte[] iv, byte[] key, OutputStream output) {
@@ -112,7 +112,7 @@ public class Cbc {
     /**
      * Encrypts a block. {@link Cbc#_current} will be modified.
      *
-     * @param inBuffer array containing the input block
+     * @param inBuffer  array containing the input block
      * @param outBuffer storage of the encrypted block
      */
     private void encryptBlock(byte[] inBuffer, byte[] outBuffer) {
@@ -166,7 +166,7 @@ public class Cbc {
      * Encrypts a part of the array. Only the first {@code length} {@code byte}s
      * of the array will be encrypted.
      *
-     * @param data {@code byte}s that should be encrypted
+     * @param data   {@code byte}s that should be encrypted
      * @param length number of {@code byte}s that should be encrypted
      * @throws IOException if the writing fails
      */
@@ -189,7 +189,7 @@ public class Cbc {
      * Decrypts a part of the array. Only the first {@code length} {@code byte}s
      * of the array will be decrypted.
      *
-     * @param data {@code byte}s that should be decrypted
+     * @param data   {@code byte}s that should be decrypted
      * @param length number of {@code byte}s that should be decrypted
      * @throws IOException if the writing fails
      */
@@ -231,8 +231,8 @@ public class Cbc {
      * Finishes the decryption process.
      *
      * @throws DecryptException if the last block is no legal conclusion of the
-     * stream
-     * @throws IOException if the writing fails
+     *                          stream
+     * @throws IOException      if the writing fails
      */
     public void finishDecryption() throws DecryptException, IOException {
         if (this._overflowUsed != 0) {

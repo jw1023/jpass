@@ -60,7 +60,6 @@ import static jpass.ui.helper.EntryHelper.copyEntryField;
  * A dialog with the entry data.
  *
  * @author Gabor_Bata
- *
  */
 public class EntryDialog extends JDialog implements ActionListener {
 
@@ -95,9 +94,9 @@ public class EntryDialog extends JDialog implements ActionListener {
     /**
      * Creates a new EntryDialog instance.
      *
-     * @param parent parent component
-     * @param title dialog title
-     * @param entry the entry to fill form data, can be null
+     * @param parent   parent component
+     * @param title    dialog title
+     * @param entry    the entry to fill form data, can be null
      * @param newEntry new entry marker
      */
     public EntryDialog(JPassFrame parent, String title, Entry entry, boolean newEntry) {

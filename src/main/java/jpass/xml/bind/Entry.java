@@ -35,8 +35,6 @@ import java.time.temporal.ChronoUnit;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
- *
- *
  */
 public class Entry {
 

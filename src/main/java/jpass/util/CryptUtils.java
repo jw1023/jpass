@@ -42,7 +42,6 @@ import javax.crypto.spec.PBEKeySpec;
  * Crypto related utility class.
  *
  * @author Gabor_Bata
- *
  */
 public final class CryptUtils {
 
@@ -87,8 +86,8 @@ public final class CryptUtils {
      * of Standards and Technology recommends a salt length of 128 bits.
      * </p>
      *
-     * @param text password text
-     * @param salt the salt
+     * @param text      password text
+     * @param salt      the salt
      * @param iteration number of iterations
      * @return the generated key
      */
@@ -138,7 +137,7 @@ public final class CryptUtils {
      * the typical user.
      * </p>
      *
-     * @param text password text
+     * @param text      password text
      * @param iteration number of iterations
      * @return hash of the password
      */

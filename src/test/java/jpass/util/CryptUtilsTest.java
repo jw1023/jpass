@@ -29,6 +29,7 @@
 package jpass.util;
 
 import java.nio.charset.StandardCharsets;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -43,14 +44,14 @@ public class CryptUtilsTest {
     public void shouldCalculateSha256Hash() throws Exception {
         // given
         byte[] expectedHash = {
-            (byte) 0xd0, (byte) 0xc0, (byte) 0x4f, (byte) 0x4b,
-            (byte) 0x19, (byte) 0x51, (byte) 0xe4, (byte) 0xae,
-            (byte) 0xaa, (byte) 0xec, (byte) 0x82, (byte) 0x23,
-            (byte) 0xed, (byte) 0x20, (byte) 0x39, (byte) 0xe5,
-            (byte) 0x42, (byte) 0xf3, (byte) 0xaa, (byte) 0xe8,
-            (byte) 0x05, (byte) 0xa6, (byte) 0xfa, (byte) 0x7f,
-            (byte) 0x6d, (byte) 0x79, (byte) 0x4e, (byte) 0x5a,
-            (byte) 0xff, (byte) 0xf5, (byte) 0xd2, (byte) 0x72
+                (byte) 0xd0, (byte) 0xc0, (byte) 0x4f, (byte) 0x4b,
+                (byte) 0x19, (byte) 0x51, (byte) 0xe4, (byte) 0xae,
+                (byte) 0xaa, (byte) 0xec, (byte) 0x82, (byte) 0x23,
+                (byte) 0xed, (byte) 0x20, (byte) 0x39, (byte) 0xe5,
+                (byte) 0x42, (byte) 0xf3, (byte) 0xaa, (byte) 0xe8,
+                (byte) 0x05, (byte) 0xa6, (byte) 0xfa, (byte) 0x7f,
+                (byte) 0x6d, (byte) 0x79, (byte) 0x4e, (byte) 0x5a,
+                (byte) 0xff, (byte) 0xf5, (byte) 0xd2, (byte) 0x72
         };
 
         // when
@@ -64,14 +65,14 @@ public class CryptUtilsTest {
     public void shouldCalculateSha256HashWithIterations() throws Exception {
         // given
         byte[] expectedHash = {
-            (byte) 0xef, (byte) 0x39, (byte) 0xf8, (byte) 0x3b,
-            (byte) 0x5a, (byte) 0x4e, (byte) 0xf7, (byte) 0xb0,
-            (byte) 0x56, (byte) 0x0f, (byte) 0xb2, (byte) 0x40,
-            (byte) 0x7b, (byte) 0xb5, (byte) 0xbd, (byte) 0x70,
-            (byte) 0xc6, (byte) 0x79, (byte) 0x5b, (byte) 0x5e,
-            (byte) 0x7f, (byte) 0x0d, (byte) 0x78, (byte) 0x5f,
-            (byte) 0xbc, (byte) 0x02, (byte) 0x17, (byte) 0x7b,
-            (byte) 0xbf, (byte) 0x2b, (byte) 0xec, (byte) 0xbf
+                (byte) 0xef, (byte) 0x39, (byte) 0xf8, (byte) 0x3b,
+                (byte) 0x5a, (byte) 0x4e, (byte) 0xf7, (byte) 0xb0,
+                (byte) 0x56, (byte) 0x0f, (byte) 0xb2, (byte) 0x40,
+                (byte) 0x7b, (byte) 0xb5, (byte) 0xbd, (byte) 0x70,
+                (byte) 0xc6, (byte) 0x79, (byte) 0x5b, (byte) 0x5e,
+                (byte) 0x7f, (byte) 0x0d, (byte) 0x78, (byte) 0x5f,
+                (byte) 0xbc, (byte) 0x02, (byte) 0x17, (byte) 0x7b,
+                (byte) 0xbf, (byte) 0x2b, (byte) 0xec, (byte) 0xbf
         };
 
         // when
@@ -85,14 +86,14 @@ public class CryptUtilsTest {
     public void shouldCalculatePBKDF2KeyWithDefaultIterations() throws Exception {
         // given
         byte[] expectedKey = {
-            (byte) 0x9f, (byte) 0x81, (byte) 0x36, (byte) 0x37,
-            (byte) 0x28, (byte) 0xef, (byte) 0xf8, (byte) 0xc5,
-            (byte) 0x9f, (byte) 0x78, (byte) 0xb0, (byte) 0xf0,
-            (byte) 0x8e, (byte) 0xec, (byte) 0x38, (byte) 0xe3,
-            (byte) 0x51, (byte) 0xe0, (byte) 0x0c, (byte) 0xe9,
-            (byte) 0xea, (byte) 0xb6, (byte) 0x8f, (byte) 0xe7,
-            (byte) 0x2e, (byte) 0xf9, (byte) 0x09, (byte) 0x84,
-            (byte) 0xdf, (byte) 0xa5, (byte) 0x7d, (byte) 0xa6
+                (byte) 0x9f, (byte) 0x81, (byte) 0x36, (byte) 0x37,
+                (byte) 0x28, (byte) 0xef, (byte) 0xf8, (byte) 0xc5,
+                (byte) 0x9f, (byte) 0x78, (byte) 0xb0, (byte) 0xf0,
+                (byte) 0x8e, (byte) 0xec, (byte) 0x38, (byte) 0xe3,
+                (byte) 0x51, (byte) 0xe0, (byte) 0x0c, (byte) 0xe9,
+                (byte) 0xea, (byte) 0xb6, (byte) 0x8f, (byte) 0xe7,
+                (byte) 0x2e, (byte) 0xf9, (byte) 0x09, (byte) 0x84,
+                (byte) 0xdf, (byte) 0xa5, (byte) 0x7d, (byte) 0xa6
         };
         byte[] salt = "salt".getBytes(StandardCharsets.UTF_8);
 

@@ -35,7 +35,6 @@ import javax.swing.JPasswordField;
  * flags if the password field content is allowed to copy to system clipboard.
  *
  * @author Gabor_Bata
- *
  */
 public class CopiablePasswordField extends JPasswordField {
 
