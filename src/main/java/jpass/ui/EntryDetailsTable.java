@@ -28,7 +28,16 @@
  */
 package jpass.ui;
 
-import java.awt.Component;
+import jpass.ui.action.TableListener;
+import jpass.util.Configuration;
+import jpass.util.DateUtils;
+import jpass.xml.bind.Entry;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
@@ -36,15 +45,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
-import jpass.ui.action.TableListener;
-import jpass.util.Configuration;
-import jpass.util.DateUtils;
-import jpass.xml.bind.Entry;
 
 /**
  * Table to display entry details.
@@ -58,6 +58,7 @@ public class EntryDetailsTable extends JTable {
         TITLE("Title", Entry::getTitle),
         URL("URL", Entry::getUrl),
         USER("User", Entry::getUser),
+        PASSWORD("Password", Entry::getPassword),
         MODIFIED("Modified", entry -> DateUtils.formatIsoDateTime(entry.getLastModification(), FORMATTER)),
         CREATED("Created", entry -> DateUtils.formatIsoDateTime(entry.getCreationDate(), FORMATTER));
 
@@ -83,6 +84,10 @@ public class EntryDetailsTable extends JTable {
 
     private static final String[] DEFAULT_DETAILS = {
             DetailType.TITLE.name(),
+            DetailType.URL.name(),
+            DetailType.USER.name(),
+            DetailType.PASSWORD.name(),
+            DetailType.CREATED.name(),
             DetailType.MODIFIED.name()
     };
 
