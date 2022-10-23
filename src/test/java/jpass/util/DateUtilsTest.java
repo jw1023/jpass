@@ -223,7 +223,7 @@ public class DateUtilsTest {
         String nullFormat = null;
         DateTimeFormatter formatter = DateUtils.createFormatter(nullFormat);
 
-        String expectedResult = "1970-01-19";
+        String expectedResult = "1970-01-20";
         String result = DateUtils.formatIsoDateTime(dateStringNull, formatter);
 
         assertEquals(result, expectedResult);
