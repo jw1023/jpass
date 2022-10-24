@@ -35,9 +35,6 @@ import jpass.xml.bind.Entry;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
@@ -120,6 +117,7 @@ public class EntryDetailsTable extends JTable {
         setModel(tableModel);
         getTableHeader().setReorderingAllowed(true);
         addMouseListener(new TableListener());
+        setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
     }
 
     @Override
@@ -127,18 +125,18 @@ public class EntryDetailsTable extends JTable {
         return false;
     }
 
-    @Override
-    public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
-        Component component = super.prepareRenderer(renderer, row, column);
-        if (column > 0) {
-            int rendererWidth = component.getPreferredSize().width;
-            TableColumn tableColumn = getColumnModel().getColumn(column);
-            int columnWidth = Math.max(rendererWidth + getIntercellSpacing().width, tableColumn.getPreferredWidth());
-            tableColumn.setPreferredWidth(columnWidth);
-            tableColumn.setMaxWidth(columnWidth);
-        }
-        return component;
-    }
+//    @Override
+//    public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
+//        Component component = super.prepareRenderer(renderer, row, column);
+//        if (column > 0) {
+//            int rendererWidth = component.getPreferredSize().width;
+//            TableColumn tableColumn = getColumnModel().getColumn(column);
+//            int columnWidth = Math.max(rendererWidth + getIntercellSpacing().width, tableColumn.getPreferredWidth());
+//            tableColumn.setPreferredWidth(columnWidth);
+//            tableColumn.setMaxWidth(columnWidth);
+//        }
+//        return component;
+//    }
 
     public void clear() {
         tableModel.setRowCount(0);
