@@ -31,17 +31,13 @@ package jpass;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
-
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
 import jpass.ui.JPassFrame;
 import jpass.util.Configuration;
 
+import javax.swing.*;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 
 /**
  * Entry point of JPass.
@@ -51,14 +47,19 @@ import javax.swing.JFrame;
 public class JPass {
 
     private static final Logger LOG = Logger.getLogger(JPass.class.getName());
+    private static final String JPASS_FILE = "jpassfile";
 
     static {
         System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
     }
 
     public static void main(final String[] args) {
+        HashMap<String, String> argsMap = parseArgs(args);
         try {
             UIManager.put("Button.arc", 4);
+            if (argsMap.containsKey(Configuration.CONF_LOC_KEY)) {
+                System.setProperty(Configuration.CONF_LOC_KEY, argsMap.get(Configuration.CONF_LOC_KEY));
+            }
             FlatLaf lookAndFeel;
             if (Configuration.getInstance().is("ui.theme.dark.mode.enabled", false)) {
                 lookAndFeel = new FlatDarkLaf();
@@ -72,6 +73,24 @@ public class JPass {
             LOG.log(Level.CONFIG, "Could not set look and feel for the application", e);
         }
 
-        SwingUtilities.invokeLater(() -> JPassFrame.getInstance((args.length > 0) ? args[0] : null));
+        SwingUtilities.invokeLater(() -> JPassFrame.getInstance(argsMap.getOrDefault(JPASS_FILE, null)));
+    }
+
+    private static HashMap<String, String> parseArgs(String[] args) {
+        HashMap<String, String> res = new HashMap<String, String>();
+        for (int i = 0; i < args.length; i++) {
+            if (!args[i].startsWith("-")) {
+                continue;
+            }
+            switch(args[i].substring(1, args[i].length())) {
+                case Configuration.CONF_LOC_KEY:
+                    res.put(Configuration.CONF_LOC_KEY, args[i+1]);
+                    break;
+                case JPASS_FILE:
+                    res.put(JPASS_FILE, args[i+1]);
+                    break;
+            }
+        }
+        return res;
     }
 }

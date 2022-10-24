@@ -28,24 +28,17 @@
  */
 package jpass.ui;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.function.Consumer;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
-import static javax.swing.KeyStroke.getKeyStroke;
 import static java.awt.event.KeyEvent.VK_ESCAPE;
+import static javax.swing.KeyStroke.getKeyStroke;
 
 /**
  * Class for representing search panel. Search panel is hidden by default.
@@ -60,6 +53,7 @@ public class SearchPanel extends JPanel implements ActionListener {
     private final JLabel label;
     private final JTextField criteriaField;
     private final JButton closeButton;
+    private final JComboBox<String> searchField;
 
     /**
      * Creates a new search panel with the given callback object.
@@ -71,10 +65,17 @@ public class SearchPanel extends JPanel implements ActionListener {
         setBorder(new EmptyBorder(2, 2, 2, 2));
 
         this.label = new JLabel("Find: ", MessageDialog.getIcon("find"), SwingConstants.LEADING);
+        this.searchField = new JComboBox<>();
+        this.searchField.addItem(EntryDetailsTable.TITTLE);
+        this.searchField.addItem(EntryDetailsTable.URL);
+        this.searchField.addItem(EntryDetailsTable.USER);
+        this.searchField.addItem(EntryDetailsTable.PWD);
 
         this.criteriaField = TextComponentFactory.newTextField();
 
         if (searchCallback != null) {
+            this.searchField.addItemListener(e -> searchCallback.accept(isEnabled()));
+
             this.criteriaField.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void changedUpdate(DocumentEvent e) {
@@ -108,7 +109,10 @@ public class SearchPanel extends JPanel implements ActionListener {
         this.closeButton.getInputMap(WHEN_IN_FOCUSED_WINDOW).put(getKeyStroke(VK_ESCAPE, 0), SEARCH_PANEL_CLOSE_ACTION);
         this.closeButton.getActionMap().put(SEARCH_PANEL_CLOSE_ACTION, closeAction);
 
-        add(this.label, BorderLayout.WEST);
+        JPanel panelFront = new JPanel();
+        panelFront.add(this.label, BorderLayout.WEST);
+        panelFront.add(this.searchField, BorderLayout.EAST);
+        add(panelFront, BorderLayout.WEST);
         add(this.criteriaField, BorderLayout.CENTER);
         add(this.closeButton, BorderLayout.EAST);
 
@@ -153,5 +157,19 @@ public class SearchPanel extends JPanel implements ActionListener {
             criteria = criteria == null ? "" : criteria.trim();
         }
         return criteria;
+    }
+
+    /**
+     * Get search field.
+     *
+     * @return get search field, non null
+     */
+    public String getSearchField() {
+        Object field = "";
+        if (isVisible() && isEnabled()) {
+            field = this.searchField.getSelectedItem();
+            field = field instanceof String ? field.toString() : "";
+        }
+        return field.toString();
     }
 }

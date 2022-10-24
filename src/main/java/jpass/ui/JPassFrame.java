@@ -36,8 +36,8 @@ import jpass.ui.helper.FileHelper;
 import jpass.util.Configuration;
 import jpass.xml.bind.Entry;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,21 +48,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.swing.WindowConstants;
-
-import static jpass.ui.MessageDialog.NO_OPTION;
-import static jpass.ui.MessageDialog.YES_NO_CANCEL_OPTION;
-import static jpass.ui.MessageDialog.YES_OPTION;
-import static jpass.ui.MessageDialog.getIcon;
-import static jpass.ui.MessageDialog.showQuestionMessage;
+import static jpass.ui.MessageDialog.*;
 
 /**
  * The main frame for JPass.
@@ -269,10 +255,28 @@ public final class JPassFrame extends JFrame {
         List<Entry> entries = new ArrayList<>(this.model.getEntries().getEntry());
         Collections.sort(entries, Comparator.comparing(Entry::getTitle, String.CASE_INSENSITIVE_ORDER));
         String searchCriteria = this.searchPanel.getSearchCriteria();
-        entries.stream()
-                .filter(entry -> searchCriteria.isEmpty() || entry.getTitle().toLowerCase().contains(searchCriteria.toLowerCase()))
-                .forEach(this.entryDetailsTable::addRow);
-
+        switch (this.searchPanel.getSearchField()) {
+            case EntryDetailsTable.URL:
+                entries.stream()
+                        .filter(entry -> searchCriteria.isEmpty() || entry.getUrl().toLowerCase().contains(searchCriteria.toLowerCase()))
+                        .forEach(this.entryDetailsTable::addRow);
+                break;
+            case EntryDetailsTable.USER:
+                entries.stream()
+                        .filter(entry -> searchCriteria.isEmpty() || entry.getUser().toLowerCase().contains(searchCriteria.toLowerCase()))
+                        .forEach(this.entryDetailsTable::addRow);
+                break;
+            case EntryDetailsTable.PWD:
+                entries.stream()
+                        .filter(entry -> searchCriteria.isEmpty() || entry.getPassword().toLowerCase().contains(searchCriteria.toLowerCase()))
+                        .forEach(this.entryDetailsTable::addRow);
+                break;
+            default:
+                entries.stream()
+                        .filter(entry -> searchCriteria.isEmpty() || entry.getTitle().toLowerCase().contains(searchCriteria.toLowerCase()))
+                        .forEach(this.entryDetailsTable::addRow);
+                break;
+        }
         if (selectTitle != null) {
             int rowCount = this.entryDetailsTable.getModel().getRowCount();
             for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {

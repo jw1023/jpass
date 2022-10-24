@@ -50,22 +50,28 @@ import java.util.stream.Collectors;
  * Table to display entry details.
  */
 public class EntryDetailsTable extends JTable {
+    public static final String TITTLE = "Title";
+    public static final String URL = "URL";
+    public static final String USER = "User";
+    public static final String PWD = "Password";
+    public static final String CREATED = "Modified";
+    public static final String MODIFIED = "Created";
 
     private static final DateTimeFormatter FORMATTER
             = DateUtils.createFormatter(Configuration.getInstance().get("date.format", "yyyy-MM-dd"));
 
     private enum DetailType {
-        TITLE("Title", Entry::getTitle),
-        URL("URL", Entry::getUrl),
-        USER("User", Entry::getUser),
-        PASSWORD("Password", Entry::getPassword),
-        MODIFIED("Modified", entry -> DateUtils.formatIsoDateTime(entry.getLastModification(), FORMATTER)),
-        CREATED("Created", entry -> DateUtils.formatIsoDateTime(entry.getCreationDate(), FORMATTER));
+        TITLE(EntryDetailsTable.TITTLE, Entry::getTitle),
+        URL(EntryDetailsTable.URL, Entry::getUrl),
+        USER(EntryDetailsTable.USER, Entry::getUser),
+        PASSWORD(EntryDetailsTable.PWD, Entry::getPassword),
+        MODIFIED(EntryDetailsTable.MODIFIED, entry -> DateUtils.formatIsoDateTime(entry.getLastModification(), FORMATTER)),
+        CREATED(EntryDetailsTable.CREATED, entry -> DateUtils.formatIsoDateTime(entry.getCreationDate(), FORMATTER));
 
         private final String description;
         private final Function<Entry, String> valueMapper;
 
-        private DetailType(String description, Function<Entry, String> valueMapper) {
+        DetailType(String description, Function<Entry, String> valueMapper) {
             this.description = description;
             this.valueMapper = valueMapper;
         }
@@ -80,7 +86,7 @@ public class EntryDetailsTable extends JTable {
     }
 
     private static final Map<String, DetailType> DETAILS_BY_NAME = Arrays.stream(DetailType.values())
-            .collect(Collectors.toMap(detail -> detail.name(), Function.identity()));
+            .collect(Collectors.toMap(Enum::name, Function.identity()));
 
     private static final String[] DEFAULT_DETAILS = {
             DetailType.TITLE.name(),
@@ -98,21 +104,21 @@ public class EntryDetailsTable extends JTable {
         super();
 
         detailsToDisplay = Arrays.stream(Configuration.getInstance().getArray("entry.details", DEFAULT_DETAILS))
-                .map(name -> DETAILS_BY_NAME.get(name))
+                .map(DETAILS_BY_NAME::get)
                 .filter(Objects::nonNull)
                 .distinct()
                 .collect(Collectors.toList());
 
         if (detailsToDisplay.isEmpty()) {
             Arrays.stream(DEFAULT_DETAILS)
-                    .map(name -> DETAILS_BY_NAME.get(name))
+                    .map(DETAILS_BY_NAME::get)
                     .forEach(detailsToDisplay::add);
         }
 
         tableModel = new DefaultTableModel();
         detailsToDisplay.forEach(detail -> tableModel.addColumn(detail.getDescription()));
         setModel(tableModel);
-        getTableHeader().setReorderingAllowed(false);
+        getTableHeader().setReorderingAllowed(true);
         addMouseListener(new TableListener());
     }
 

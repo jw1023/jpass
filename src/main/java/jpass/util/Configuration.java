@@ -46,9 +46,11 @@ public final class Configuration {
     private static Configuration INSTANCE;
     private Properties properties = new Properties();
 
+    public static final String CONF_LOC_KEY = "configurationPosition";
+
     private Configuration() {
         try {
-            File filePath = new File(getConfigurationFolderPath(), "jpass.properties");
+            File filePath = new File(System.getProperty(CONF_LOC_KEY) != null ? new File(System.getProperty(CONF_LOC_KEY)) : getConfigurationFolderPath(), "jpass.properties");
             if (filePath.exists() && filePath.isFile()) {
                 InputStream is = new FileInputStream(filePath);
                 properties.load(is);

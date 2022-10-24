@@ -25,7 +25,14 @@ Usage
 Java 8 or later is recommended to run JPass. You can run the application from the command line by typing (the password
 file is optional):
 
-    java -jar jpass-1.0.0-RELEASE.jar [password_file]
+    java -jar jpass-1.0.0-RELEASE.jar
+Optional parameters:
+-
+-jpassfile < jpass file path>. default: null
+
+-configurationPosition < configuration path>. default: getConfigurationFolderPath()
+
+-----
 
 For convenience, batch/shell scripts are also available for launching JPass for various platforms (i.e. `jpass.bat` for
 Windows, `jpass.sh` for Linux, `jpass.command` for macOS). Please make sure `PATH`, or `JAVA_HOME` environment variables
