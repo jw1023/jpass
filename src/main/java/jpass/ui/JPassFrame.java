@@ -277,6 +277,7 @@ public final class JPassFrame extends JFrame {
                         .forEach(this.entryDetailsTable::addRow);
                 break;
         }
+        entryDetailsTable.fitTableColumns();
         if (selectTitle != null) {
             int rowCount = this.entryDetailsTable.getModel().getRowCount();
             for (int rowIndex = 0; rowIndex < rowCount; rowIndex++) {

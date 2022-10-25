@@ -35,11 +35,12 @@ import jpass.xml.bind.Entry;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import java.awt.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -53,6 +54,7 @@ public class EntryDetailsTable extends JTable {
     public static final String PWD = "Password";
     public static final String CREATED = "Modified";
     public static final String MODIFIED = "Created";
+    public static HashSet<String> isPasswordShowSet = new HashSet<>();
 
     private static final DateTimeFormatter FORMATTER
             = DateUtils.createFormatter(Configuration.getInstance().get("date.format", "yyyy-MM-dd"));
@@ -117,38 +119,69 @@ public class EntryDetailsTable extends JTable {
         setModel(tableModel);
         getTableHeader().setReorderingAllowed(true);
         addMouseListener(new TableListener());
-        setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        setIntercellSpacing(new Dimension(0, 5));
+        fitTableColumns();
+        addPasswordColumnButton();
+    }
+
+    private void addPasswordColumnButton() {
+        this.getColumn(PWD).setCellEditor(new HideCellEditor(this));
+        this.getColumn(PWD).setCellRenderer(new HideCellRender());
+    }
+
+    public void fitTableColumns() {
+        JTableHeader header = getTableHeader();
+        Enumeration columns = getColumnModel().getColumns();
+        while (columns.hasMoreElements()) {
+            TableColumn column = (TableColumn) columns.nextElement();
+            int col = header.getColumnModel().getColumnIndex(column.getIdentifier());
+            int width = (int) getTableHeader().getDefaultRenderer()
+                    .getTableCellRendererComponent(
+                            this, column.getIdentifier(), false, false, -1, col)
+                    .getPreferredSize().getWidth();
+            for (int row = 0; row < getRowCount(); row++) {
+                int preferedwidth = (int) getCellRenderer(row, col).getTableCellRendererComponent(this,
+                        getValueAt(row, col), false, false, row, col).getPreferredSize().getWidth();
+                width = Math.max(width, preferedwidth);
+            }
+            header.setResizingColumn(column);
+            column.setWidth(width + getIntercellSpacing().width + 100);
+
+        }
     }
 
     @Override
-    public boolean isCellEditable(int row, int column) {
+    public Object getValueAt(int row, int column) {
+        if (column != getColumn(PWD).getModelIndex()) {
+            return super.getValueAt(row, column);
+        }
+        String rowTittle = getModel().getValueAt(row, 0).toString();
+        if (isPasswordShowSet.contains(rowTittle)) {
+            return super.getValueAt(row, column);
+        }
+        return "******";
+    }
+
+    @Override
+    public boolean isCellEditable( int row, int column) {
+        if ( getColumn(PWD).getModelIndex() == column) {
+            return true;
+        }
         return false;
     }
 
-//    @Override
-//    public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
-//        Component component = super.prepareRenderer(renderer, row, column);
-//        if (column > 0) {
-//            int rendererWidth = component.getPreferredSize().width;
-//            TableColumn tableColumn = getColumnModel().getColumn(column);
-//            int columnWidth = Math.max(rendererWidth + getIntercellSpacing().width, tableColumn.getPreferredWidth());
-//            tableColumn.setPreferredWidth(columnWidth);
-//            tableColumn.setMaxWidth(columnWidth);
-//        }
-//        return component;
-//    }
-
-    public void clear() {
+    public void clear () {
         tableModel.setRowCount(0);
     }
 
-    public void addRow(Entry entry) {
+    public void addRow (Entry entry){
         tableModel.addRow(detailsToDisplay.stream()
                 .map(detail -> detail.getValue(entry))
                 .toArray(Object[]::new));
     }
 
-    public int rowCount() {
+    public int rowCount () {
         return tableModel.getRowCount();
     }
 }

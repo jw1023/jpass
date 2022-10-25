@@ -28,6 +28,7 @@
  */
 package jpass.ui.helper;
 
+import jpass.ui.EntryDetailsTable;
 import jpass.ui.EntryDialog;
 import jpass.ui.JPassFrame;
 import jpass.util.ClipboardUtils;
@@ -153,6 +154,7 @@ public final class EntryHelper {
     public static void copyEntryField(JPassFrame parent, String content) {
         try {
             ClipboardUtils.setClipboardContent(content);
+            EntryDetailsTable.isPasswordShowSet.clear();
         } catch (Exception e) {
             showErrorMessage(parent, e.getMessage());
         }
